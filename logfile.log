@@ -1,0 +1,11 @@
+--------------- 26 Apr 2022 15:59:54 ---------------
+File 'name.csv' could not be found.
+Please make sure it exists in the same repository.
+
+--------------- 26 Apr 2022 16:00:10 ---------------
+names.csv: Line 6 is empty.
+
+--------------- 26 Apr 2022 16:00:46 ---------------
+names.csv: Line 6 '';234' is not valid.
+Only alphabetical characters allowed.
+

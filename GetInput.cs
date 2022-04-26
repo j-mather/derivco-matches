@@ -24,7 +24,7 @@ namespace DerivcoMatches
                 }
                 catch (System.Exception)
                 {
-                    exitWithMessage($"'{args[0]}' could not be found.\nPlease make sure it exists in the same repository.");
+                    exitWithMessage($"File '{args[0]}' could not be found.\nPlease make sure it exists in the same repository.");
                 }
             }
             else if (args.Length == 2)
@@ -37,10 +37,12 @@ namespace DerivcoMatches
         }
 
         /// <summary>
-        /// Program exit after printing what the user gave was wrong.
+        /// Program exit after printing and logging
+        /// what the user gave was wrong.
         /// </summary>
         private static void exitWithMessage(string message)
         {
+            HandleOutput.log(message);
             Console.WriteLine(message);
             Environment.Exit(0);
         }

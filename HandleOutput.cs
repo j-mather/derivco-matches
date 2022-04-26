@@ -45,5 +45,19 @@ namespace DerivcoMatches
                 Console.WriteLine(line);
             }
         }
+
+        /// <summary>
+        /// Logs text to the logfile with date and time.
+        /// </summary>
+        public static void log(string message)
+        {
+            string localDate = DateTime.Now.ToString();
+            string seperator = $"--------------- {localDate} ---------------";
+            using (StreamWriter writer = File.AppendText("logfile.log"))
+            {
+                writer.WriteLine(seperator);
+                writer.WriteLine(message + "\n");
+            }
+        }
     }
 }
