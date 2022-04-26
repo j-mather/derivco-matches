@@ -60,7 +60,9 @@ namespace DerivcoMatches
                 Console.WriteLine(enterMessage1);
                 enterMessage1 = "Please pick a valid male name or csv file:";
                 firstInput = Console.ReadLine();
-                if (firstInput == null || firstInput == "") {continue;}
+                if (firstInput == null) {continue;}
+                firstInput = firstInput.Trim();
+                if (firstInput == "") {continue;}
                 try
                 {
                     string[] fileLines = readCSVFile(firstInput);
@@ -76,7 +78,9 @@ namespace DerivcoMatches
                 Console.WriteLine(enterMessage2);
                 enterMessage1 = "Please pick a valid female name:";
                 secondInput = Console.ReadLine();
-                if (secondInput == null || secondInput == "") {continue;}
+                if (secondInput == null) {continue;}
+                secondInput = secondInput.Trim();
+                if (secondInput == "") {continue;}
                 if (secondInput.All(Char.IsLetter)) {break;}
             }
 
