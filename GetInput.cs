@@ -1,13 +1,22 @@
 namespace DerivcoMatches
 {
+    /// <summary>
+    /// Class for retrieving input from user.
+    /// </summary>
     static class GetInput
     {
-        public static string[] getInput(string[] args) {
-            string[] peoplesSet = {"Jack,Jill", "Wesly,Jennya"};
-
-            if (args.Length == 0) {
+        /// <summary>
+        /// Main method to initiate retrieval of user input
+        /// based on the command line arguments parsed.
+        /// </summary>
+        public static string[] getInput(string[] args)
+        {
+            if (args.Length == 0)
+            {
                 return getUserInput();
-            } else if (args.Length == 1) {
+            }
+            else if (args.Length == 1)
+            {
                 try
                 {
                     String[] fileLines = readCSVFile(args[0]);
@@ -17,7 +26,9 @@ namespace DerivcoMatches
                 {
                     exitWithMessage($"'{args[0]}' could not be found.\nPlease make sure it exists in the same repository.");
                 }
-            } else if (args.Length == 2) {
+            }
+            else if (args.Length == 2)
+            {
                 return twoNamesGiven(args);
             }
             
@@ -25,15 +36,25 @@ namespace DerivcoMatches
             return args;
         }
 
-        private static void exitWithMessage(string message) {
+        /// <summary>
+        /// Program exit after printing what the user gave was wrong.
+        /// </summary>
+        private static void exitWithMessage(string message)
+        {
             Console.WriteLine(message);
             Environment.Exit(0);
         }
 
-        private static string[] getUserInput() {
-            string enterMessage1 = "Please enter a male name, or the name of a csv file:";
+        /// <summary>
+        /// Retirval of user runtime input of either
+        /// two names, or a csv file name.
+        /// </summary>
+        private static string[] getUserInput()
+        {
+            string enterMessage1 = "\nPlease enter a male name, or the name of a csv file:";
             string? firstInput;
-            while (true) {
+            while (true)
+            {
                 Console.WriteLine(enterMessage1);
                 enterMessage1 = "Please pick a valid male name or csv file:";
                 firstInput = Console.ReadLine();
@@ -48,7 +69,8 @@ namespace DerivcoMatches
             }
             string enterMessage2 = "Please enter a female name:";
             string? secondInput;
-            while (true) {
+            while (true)
+            {
                 Console.WriteLine(enterMessage2);
                 enterMessage1 = "Please pick a valid female name:";
                 secondInput = Console.ReadLine();
@@ -61,7 +83,11 @@ namespace DerivcoMatches
             return personsSet;
         }
 
-        private static string[] readCSVFile(string filename) {
+        /// <summary>
+        /// Reads the csv file in the root directory.
+        /// </summary>
+        private static string[] readCSVFile(string filename)
+        {
             string[] lines = {};
             try
             {
@@ -74,38 +100,61 @@ namespace DerivcoMatches
             return lines;
         }
 
-        private static string[] convertFileLines(string filename, string[] lines) {
+        /// <summary>
+        /// Converts file lines that were read into
+        /// an array of combinations of the
+        /// male to femal posible combination matches.
+        /// </summary>
+        private static string[] convertFileLines(string filename, string[] lines)
+        {
             List<string> males = new List<string>();
             List<string> females = new List<string>();
 
             int lineCount = 1;
-            foreach (string line in lines) {
+            foreach (string line in lines)
+            {
+                if (line.Trim() == "")
+                {
+                    exitWithMessage($"{filename}: Line {lineCount} is empty.");
+                }
                 string[] columns = line.Split(",");
-                if (columns.Length != 2) {
+                if (columns.Length != 2)
+                {
                     exitWithMessage($"{filename}: Line {lineCount} should have 1 comma.");
                 }
                 string name = columns[0].Trim();
-                if (name == "") {
+                if (name == "")
+                {
                     exitWithMessage($"{filename}: Line {lineCount} has an empty name.");
-                } else if (!name.All(Char.IsLetter)) {
+                }
+                else if (!name.All(Char.IsLetter))
+                {
                     exitWithMessage($"{filename}: Line {lineCount} '{name}' is not valid.\nOnly alphabetical characters allowed.");
                 }
 
                 string gender = columns[1].Trim();
-                if (gender == "") {
+                if (gender == "")
+                {
                     exitWithMessage($"{filename}: Line {lineCount} has no gender.");
                 }
 
                 string lowerGender = gender.ToLower();
-                if (lowerGender == "m") {
-                    if (!males.Contains(name)) {
+                if (lowerGender == "m")
+                {
+                    if (!males.Contains(name))
+                    {
                         males.Add(name);
                     }
-                } else if (lowerGender == "f") {
-                    if (!females.Contains(name)) {
+                }
+                else if (lowerGender == "f")
+                {
+                    if (!females.Contains(name))
+                    {
                         females.Add(name);
                     }
-                } else {
+                }
+                else
+                {
                     exitWithMessage($"{filename}: Line {lineCount} gender '{gender}' does not exist.");
                 }
 
@@ -114,7 +163,11 @@ namespace DerivcoMatches
             return generateCombinations(males, females);
         }
 
-        private static string[] generateCombinations(List<string> males, List<string> females) {
+        /// <summary>
+        /// Produces all male to female combination matches.
+        /// </summary>
+        private static string[] generateCombinations(List<string> males, List<string> females)
+        {
             List<string> combList = new List<string>();
             foreach (string male in males)
             {
@@ -126,14 +179,21 @@ namespace DerivcoMatches
             return combList.ToArray();
         }
 
-        private static string[] twoNamesGiven(string[] args) {
+        /// <summary>
+        /// Handles user input if given 2 command line argument,
+        /// indicating a male and a female.
+        /// </summary>
+        private static string[] twoNamesGiven(string[] args)
+        {
             string male = args[0];
-            if (!male.All(Char.IsLetter)) {
+            if (!male.All(Char.IsLetter))
+            {
                 exitWithMessage($"The name '{male}' is not valid.\nOnly alphabetical characters allowed.");
             }
             
             string female = args[1];
-            if (!female.All(Char.IsLetter)) {
+            if (!female.All(Char.IsLetter))
+            {
                 exitWithMessage($"The name '{female}' is not valid.\nOnly alphabetical characters allowed.");
             }
             string persons = $"{male},{female}";

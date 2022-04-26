@@ -1,27 +1,49 @@
 namespace DerivcoMatches
 {
+    /// <summary>
+    /// Object for a matchup of a male and female.
+    /// </summary>
     public class Match
     {
         private string output;
         private int percentage;
 
+        /// <summary>
+        /// Match constructor.
+        /// </summary>
+        /// <param name="male">Male name to match.</param>
+        /// <param name="female">Female name to match.</param>
         public Match(string male, string female)
         {
             output = match(male, female);
         }
 
-        public string getOutput() {
+        /// <summary>
+        /// Getter for the matching string for the 2 people.
+        /// </summary>
+        public string getOutput()
+        {
             return output;
         }
 
-        public int getPercentage() {
+        /// <summary>
+        /// Getter for the percentage match for the 2 people.
+        /// </summary>
+        public int getPercentage()
+        {
             return percentage;
         }
 
-        private string match(string male, string female) {
+        /// <summary>
+        /// Handles the main logic for matching 2 people
+        /// and getting a percentage result.
+        /// </summary>
+        private string match(string male, string female)
+        {
             string sentence = $"{male} matches {female}";
             string percString = getMatchNumbers(sentence);
-            while (percString.Length > 2) {
+            while (percString.Length > 2)
+            {
                 percString = reduceCounts(percString);
             }
             percentage = Int32.Parse(percString);
@@ -29,43 +51,61 @@ namespace DerivcoMatches
             return output;
         }
 
+        /// <summary>
+        /// Takes in the matching sentence, and converts
+        /// that to concatinated matching letter counts.
+        /// </summary>
         private string getMatchNumbers(string sentence)
         {
             string catCounts = "";
             sentence = sentence.Replace(" ", "").ToLower();
 
-            while (sentence.Length > 0) {
+            while (sentence.Length > 0)
+            {
                 string character = sentence.Substring(0, 1);
                 string minused = sentence.Replace(character, "");
                 int count = sentence.Length - minused.Length;
-                catCounts = catCounts + count.ToString();
+                catCounts += count.ToString();
                 sentence = minused;
             }
             return catCounts;
         }
 
+        /// <summary>
+        /// Takes in a concatenated set of numbers
+        /// and reduces it by adding the first and the last numbers
+        /// until a shorter concatenated set is produced.
+        /// </summary>
         private string reduceCounts(string catCounts)
         {
             string reducedCatCounts = "";
-            while (catCounts.Length > 1) {
+            while (catCounts.Length > 1)
+            {
                 int first = Int32.Parse(catCounts.Substring(0, 1));
                 int last = Int32.Parse(catCounts.Substring(catCounts.Length - 1));
                 int sum = first + last;
-                reducedCatCounts = reducedCatCounts + sum.ToString();
+                reducedCatCounts += sum.ToString();
                 catCounts = catCounts.Substring(1, catCounts.Length - 2);
             }
-            if (catCounts.Length > 0) {
-                reducedCatCounts = reducedCatCounts + catCounts;
+            if (catCounts.Length > 0)
+            {
+                reducedCatCounts += catCounts;
             }
             return reducedCatCounts;
         }
 
-        private string getOutputMessage(string sentence, string percentage) {
+        /// <summary>
+        /// Converts the matching sentence
+        /// to the final matching sentence.
+        /// </summary>
+        private string getOutputMessage(string sentence, string percent)
+        {
             string additional = "";
-            if (Int32.Parse(percentage) > 80) {
+            if (Int32.Parse(percent) > 80)
+            {
                 additional = ", good match";
             }
-            string final = $"{sentence} {percentage}%{additional}";
+            string final = $"{sentence} {percent}%{additional}";
             return final;
         }
     }
