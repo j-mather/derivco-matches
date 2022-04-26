@@ -1,0 +1,15 @@
+Joe matches Joe 85%, good match
+Hulvey matches Megan 81%, good match
+Hulvey matches Lexi 71%
+Andy matches Megan 70%
+Andy matches Lexi 69%
+Steve matches Megan 62%
+Dude matches Megan 61%
+Hulvey matches Joe 61%
+Steve matches Lexi 61%
+Joe matches Megan 60%
+Steve matches Joe 60%
+Dude matches Lexi 51%
+Andy matches Joe 50%
+Dude matches Joe 50%
+Joe matches Lexi 50%

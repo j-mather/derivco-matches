@@ -1,0 +1,15 @@
+C:\Users\jason\Projects\Personal\derivco-matches\bin\Debug\net6.0\derivco-matches.exe
+C:\Users\jason\Projects\Personal\derivco-matches\bin\Debug\net6.0\derivco-matches.deps.json
+C:\Users\jason\Projects\Personal\derivco-matches\bin\Debug\net6.0\derivco-matches.runtimeconfig.json
+C:\Users\jason\Projects\Personal\derivco-matches\bin\Debug\net6.0\derivco-matches.dll
+C:\Users\jason\Projects\Personal\derivco-matches\bin\Debug\net6.0\derivco-matches.pdb
+C:\Users\jason\Projects\Personal\derivco-matches\obj\Debug\net6.0\derivco-matches.csproj.AssemblyReference.cache
+C:\Users\jason\Projects\Personal\derivco-matches\obj\Debug\net6.0\derivco-matches.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jason\Projects\Personal\derivco-matches\obj\Debug\net6.0\derivco-matches.AssemblyInfoInputs.cache
+C:\Users\jason\Projects\Personal\derivco-matches\obj\Debug\net6.0\derivco-matches.AssemblyInfo.cs
+C:\Users\jason\Projects\Personal\derivco-matches\obj\Debug\net6.0\derivco-matches.csproj.CoreCompileInputs.cache
+C:\Users\jason\Projects\Personal\derivco-matches\obj\Debug\net6.0\derivco-matches.dll
+C:\Users\jason\Projects\Personal\derivco-matches\obj\Debug\net6.0\refint\derivco-matches.dll
+C:\Users\jason\Projects\Personal\derivco-matches\obj\Debug\net6.0\derivco-matches.pdb
+C:\Users\jason\Projects\Personal\derivco-matches\obj\Debug\net6.0\derivco-matches.genruntimeconfig.cache
+C:\Users\jason\Projects\Personal\derivco-matches\obj\Debug\net6.0\ref\derivco-matches.dll
